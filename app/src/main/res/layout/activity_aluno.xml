@@ -4,41 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExternoActivity">
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="168dp" />
+    tools:context=".AlunoActivity">
 
     <EditText
-        android:id="@+id/edt_externo_nome"
+        android:id="@+id/edt_aluno_nome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Nome"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="48dp" />
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="60dp" />
 
     <EditText
-        android:id="@+id/edt_externo_email"
+        android:id="@+id/edt_aluno_matricula"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="E-mail"
+        android:hint="Matrícula"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="121dp" />
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="132dp" />
 
     <Button
-        android:id="@+id/btn_externo_ok"
+        android:id="@+id/btn_aluno_ok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="OK"
         tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="231dp" />
+        tools:layout_editor_absoluteY="240dp" />
 </android.support.constraint.ConstraintLayout>
