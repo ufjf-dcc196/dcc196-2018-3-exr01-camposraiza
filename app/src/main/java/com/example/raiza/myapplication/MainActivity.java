@@ -19,14 +19,20 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_EXTERNO = 3;
     public static final String EXTERNO_NOME = "nome externo";
     public static final String EXTERNO_EMAIL = "email externo";
-    private TextView txtMensagem;
+    private TextView txtMensagem, txtAluno, txtServidor, txtExterno;
     private Button btnAluno, btnServidor, btnExterno;
+    private int contAluno, contServidor, contExterno;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         txtMensagem = (TextView)findViewById(R.id.txt_mensagem);
+        txtAluno = (TextView)findViewById(R.id.txt_aluno);
+        txtServidor = (TextView)findViewById(R.id.txt_servidor);
+        txtExterno = (TextView)findViewById(R.id.txt_externo);
+
 
         btnAluno = findViewById(R.id.btn_aluno);
         btnAluno.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
             String nome = bundleResultado.getString(MainActivity.ALUNO_NOME);
             String matricula = bundleResultado.getString(MainActivity.ALUNO_MATRICULA);
             txtMensagem.setText("Olá " + nome + " de matrícula: " + matricula);
+            contAluno++;
+            txtAluno.setText("Há " + contAluno + " aluno(s) no evento");
         }
 
         else if(requestCode == MainActivity.REQUEST_SERVIDOR && resultCode == Activity.RESULT_OK && data != null) {
@@ -74,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
             String nome = bundleResultado.getString(MainActivity.SERVIDOR_NOME);
             String siape = bundleResultado.getString(MainActivity.SERVIDOR_SIAPE);
             txtMensagem.setText("Olá " + nome + " de siape: " + siape);
+            contServidor++;
+            txtServidor.setText("Há " + contServidor + " servidor(es) no evento");
         }
 
         else if(requestCode == MainActivity.REQUEST_EXTERNO && resultCode == Activity.RESULT_OK && data != null) {
@@ -81,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
             String nome = bundleResultado.getString(MainActivity.EXTERNO_NOME);
             String email = bundleResultado.getString(MainActivity.EXTERNO_EMAIL);
             txtMensagem.setText("Olá " + nome + " de e-mail: " + email);
+            contExterno++;
+            txtExterno.setText("Há " + contExterno + " externo(s) no evento");
         }
 
     }
