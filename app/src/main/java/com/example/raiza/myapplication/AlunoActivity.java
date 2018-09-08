@@ -26,7 +26,7 @@ public class AlunoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent resultado = new Intent();
                 resultado.putExtra(MainActivity.ALUNO_NOME, edtNome.getText().toString());
-                resultado.putExtra(MainActivity.ALUNO_MATRICULA, edtNome.getText().toString());
+                resultado.putExtra(MainActivity.ALUNO_MATRICULA, edtMatricula.getText().toString());
                 setResult(Activity.RESULT_OK, resultado);
                 finish();
             }

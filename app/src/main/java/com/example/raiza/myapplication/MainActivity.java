@@ -13,8 +13,11 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_ALUNO = 1;
     public static final String ALUNO_NOME = "nome aluno";
     public static final String ALUNO_MATRICULA = "matricula aluno";
+    private static final int REQUEST_SERVIDOR = 2;
+    public static final String SERVIDOR_SIAPE = "siape servidor";
+    public static String SERVIDOR_NOME = "nome servidor";
     private TextView txtMensagem;
-    private Button btnAluno;
+    private Button btnAluno, btnServidor, btnExterno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnServidor = findViewById(R.id.btn_servidor);
+        btnServidor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ServidorActivity.class);
+                startActivityForResult(intent, MainActivity.REQUEST_SERVIDOR);
+            }
+        });
+
+
     }
 
     @Override
@@ -41,7 +54,20 @@ public class MainActivity extends AppCompatActivity {
             Bundle bundleResultado = data.getExtras();
             String nome = bundleResultado.getString(MainActivity.ALUNO_NOME);
             String matricula = bundleResultado.getString(MainActivity.ALUNO_MATRICULA);
-            txtMensagem.setText("Olá" + nome + "de matrícula: " + matricula);
+            txtMensagem.setText("Olá " + nome + "de matrícula: " + matricula);
         }
+
+        else if(requestCode == MainActivity.REQUEST_SERVIDOR && resultCode == Activity.RESULT_OK && data != null) {
+            Bundle bundleResultado = data.getExtras();
+            String nome = bundleResultado.getString(MainActivity.SERVIDOR_NOME);
+            String siape = bundleResultado.getString(MainActivity.SERVIDOR_SIAPE);
+            txtMensagem.setText("Olá " + nome + "de siape: " + siape);
+        }
+
     }
+
+
+
+
+
 }
