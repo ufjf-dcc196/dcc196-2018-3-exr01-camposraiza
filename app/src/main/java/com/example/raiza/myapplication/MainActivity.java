@@ -14,8 +14,11 @@ public class MainActivity extends AppCompatActivity {
     public static final String ALUNO_NOME = "nome aluno";
     public static final String ALUNO_MATRICULA = "matricula aluno";
     private static final int REQUEST_SERVIDOR = 2;
-    public static final String SERVIDOR_SIAPE = "siape servidor";
     public static String SERVIDOR_NOME = "nome servidor";
+    public static final String SERVIDOR_SIAPE = "siape servidor";
+    private static final int REQUEST_EXTERNO = 3;
+    public static final String EXTERNO_NOME = "nome externo";
+    public static final String EXTERNO_EMAIL = "email externo";
     private TextView txtMensagem;
     private Button btnAluno, btnServidor, btnExterno;
 
@@ -43,6 +46,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnExterno = findViewById(R.id.btn_externo);
+        btnExterno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ExternoActivity.class);
+                startActivityForResult(intent, MainActivity.REQUEST_EXTERNO);
+            }
+        });
+
 
     }
 
@@ -54,14 +66,21 @@ public class MainActivity extends AppCompatActivity {
             Bundle bundleResultado = data.getExtras();
             String nome = bundleResultado.getString(MainActivity.ALUNO_NOME);
             String matricula = bundleResultado.getString(MainActivity.ALUNO_MATRICULA);
-            txtMensagem.setText("Olá " + nome + "de matrícula: " + matricula);
+            txtMensagem.setText("Olá " + nome + " de matrícula: " + matricula);
         }
 
         else if(requestCode == MainActivity.REQUEST_SERVIDOR && resultCode == Activity.RESULT_OK && data != null) {
             Bundle bundleResultado = data.getExtras();
             String nome = bundleResultado.getString(MainActivity.SERVIDOR_NOME);
             String siape = bundleResultado.getString(MainActivity.SERVIDOR_SIAPE);
-            txtMensagem.setText("Olá " + nome + "de siape: " + siape);
+            txtMensagem.setText("Olá " + nome + " de siape: " + siape);
+        }
+
+        else if(requestCode == MainActivity.REQUEST_EXTERNO && resultCode == Activity.RESULT_OK && data != null) {
+            Bundle bundleResultado = data.getExtras();
+            String nome = bundleResultado.getString(MainActivity.EXTERNO_NOME);
+            String email = bundleResultado.getString(MainActivity.EXTERNO_EMAIL);
+            txtMensagem.setText("Olá " + nome + " de e-mail: " + email);
         }
 
     }

@@ -21,7 +21,7 @@ public class ServidorActivity extends AppCompatActivity {
         edtNome = (EditText)findViewById(R.id.edt_servidor_nome);
         edtSiape = (EditText)findViewById(R.id.edt_servidor_siape);
         btnOk = (Button)findViewById(R.id.btn_servidor_ok);
- 
+
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
